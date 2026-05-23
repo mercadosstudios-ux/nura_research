@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NURA — Investigación & Dirección Creativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;--near:#111010;--graph:#2A2826;--gmid:#3D3A37;
+  --stone:#5C5753;--wgray:#8A8480;--cdark:#C4B49A;--cream:#DDD0BC;
+  --clight:#EDE4D6;--ivory:#F6F1EA;--white:#FDFCFA;
+  --red:#7A1C1C;--redm:#9B2626;--redb:#C13333;
+  --earth:#8B6E52;--earthm:#A68660;--earthl:#C4A882;
+  --gold:#B8953A;--goldp:#E8D9A8;
+  --green:#0D3321;--lime:#C8E830;--brown:#5E4832;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--near);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* ─── NAV ─── */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,8,8,0.95);backdrop-filter:blur(12px);border-bottom:.5px solid var(--gmid);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:56px}
+.nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:.12em;color:var(--white);text-transform:uppercase}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--stone);transition:color .2s}
+.nav-links a:hover{color:var(--cream)}
+.nav-badge{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--redm);border:.5px solid rgba(155,38,38,.4);padding:4px 12px}
+
+/* ─── HERO ─── */
+.hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;background:var(--black);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 65% 40%,rgba(122,28,28,.2) 0%,transparent 65%);pointer-events:none}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 64px;border-right:.5px solid var(--gmid);position:relative;z-index:2}
+.hero-right{display:flex;flex-direction:column;justify-content:flex-end;padding:80px 64px;position:relative;z-index:2}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--redm);margin-bottom:24px}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:100px;font-weight:900;letter-spacing:-.02em;line-height:.9;color:var(--white);text-transform:uppercase;margin-bottom:32px}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:var(--cdark);line-height:1.4;max-width:400px;margin-bottom:40px}
+.hero-cta{display:inline-flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);border:.5px solid var(--gmid);padding:14px 24px;transition:all .25s;cursor:pointer;background:transparent}
+.hero-cta:hover{background:var(--graph);border-color:var(--cdark)}
+.niche-pill{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--redm);border:.5px solid rgba(155,38,38,.35);padding:6px 14px;margin-bottom:12px}
+.hero-niche-list{display:flex;flex-direction:column;gap:16px;margin-top:40px}
+.niche-item{display:flex;align-items:flex-start;gap:16px;padding-bottom:16px;border-bottom:.5px solid var(--gmid)}
+.niche-item:last-child{border-bottom:none;padding-bottom:0}
+.niche-num{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;color:var(--redm);letter-spacing:.1em;min-width:24px;padding-top:3px}
+.niche-text{font-size:13px;color:var(--wgray);line-height:1.5}
+.niche-text strong{color:var(--clight);font-weight:400;display:block;font-size:13px}
+
+/* ─── SECTION WRAPPER ─── */
+.sec{padding:80px 64px;border-bottom:.5px solid var(--gmid);max-width:1280px;margin:0 auto}
+.sec-head{display:flex;align-items:flex-end;gap:24px;margin-bottom:56px;padding-bottom:24px;border-bottom:.5px solid var(--gmid)}
+.sec-num{font-family:'Barlow Condensed',sans-serif;font-size:64px;font-weight:900;color:var(--gmid);line-height:1;letter-spacing:-.03em;flex-shrink:0}
+.sec-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--redm);margin-bottom:6px}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:800;color:var(--white);letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.sec-intro{font-size:13px;color:var(--wgray);max-width:520px;line-height:1.7;margin-top:6px}
+
+/* ─── NICHO SECTION ─── */
+.niche-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gmid)}
+.niche-card{background:var(--near);padding:32px 28px;transition:background .2s}
+.niche-card:hover{background:var(--graph)}
+.nc-emoji{font-size:32px;margin-bottom:16px;display:block}
+.nc-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--redm);margin-bottom:8px}
+.nc-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px}
+.nc-desc{font-size:13px;color:var(--wgray);line-height:1.6;margin-bottom:16px}
+.nc-brands{display:flex;flex-wrap:wrap;gap:6px}
+.nc-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:.5px solid rgba(196,180,154,.2);color:var(--cdark)}
+.niche-verdict{background:rgba(122,28,28,.1);border:.5px solid rgba(122,28,28,.3);padding:28px 32px;margin-top:32px;display:flex;gap:24px;align-items:flex-start}
+.verdict-icon{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:var(--redm);flex-shrink:0;line-height:1}
+.verdict-text{font-size:14px;color:var(--cream);line-height:1.7;font-weight:300}
+.verdict-text strong{color:var(--clight);font-weight:400}
+
+/* ─── BRAND REFERENCES ─── */
+.ref-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--gmid)}
+.ref-card{background:var(--near);padding:32px 28px;position:relative}
+.ref-card:hover{background:var(--graph)}
+.ref-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
+.ref-initial{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.ref-country{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--stone);text-align:right;padding-top:8px}
+.ref-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--clight);margin-bottom:4px}
+.ref-cat{font-size:11px;color:var(--stone);margin-bottom:16px}
+.ref-insight{font-size:13px;color:var(--wgray);line-height:1.6;margin-bottom:16px}
+.ref-apply{font-size:12px;color:var(--cdark);font-style:italic;font-family:'Cormorant Garamond',serif;border-top:.5px solid var(--gmid);padding-top:14px;margin-top:14px;line-height:1.6}
+.ref-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.rtag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:.5px solid}
+.rtag-r{color:var(--redm);border-color:rgba(155,38,38,.4)}
+.rtag-c{color:var(--cdark);border-color:rgba(196,180,154,.25)}
+.rtag-g{color:var(--gold);border-color:rgba(184,149,58,.35)}
+.rtag-s{color:var(--stone);border-color:rgba(92,87,83,.4)}
+
+/* ─── PALETAS CROMÁTICAS ─── */
+.paleta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.paleta-card{border:.5px solid var(--gmid);overflow:hidden;cursor:pointer;transition:transform .2s}
+.paleta-card:hover{transform:translateY(-4px)}
+.paleta-swatches{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto}
+.swatch{height:64px}
+.swatch-wide{grid-column:1/-1;height:80px}
+.paleta-info{padding:20px;background:var(--near)}
+.paleta-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white);margin-bottom:6px}
+.paleta-desc{font-size:12px;color:var(--wgray);line-height:1.5;margin-bottom:12px}
+.paleta-hexes{display:flex;flex-wrap:wrap;gap:6px}
+.hex-chip{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.08em;padding:4px 8px;border:.5px solid rgba(196,180,154,.15);color:var(--stone)}
+.paleta-badge{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:7px 14px;display:inline-block;margin-top:12px}
+.pb-sel{background:var(--red);color:var(--clight)}
+.pb-par{color:var(--stone);border:.5px solid var(--gmid)}
+
+/* ─── MOODBOARD CTA ─── */
+.mb-cta-block{background:var(--black);border:.5px solid var(--gmid);padding:56px 48px;text-align:center;position:relative;overflow:hidden}
+.mb-cta-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(122,28,28,.15) 0%,transparent 65%);pointer-events:none}
+.mb-cta-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--redm);margin-bottom:16px;position:relative;z-index:2}
+.mb-cta-title{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--white);text-transform:uppercase;letter-spacing:.02em;line-height:1;margin-bottom:16px;position:relative;z-index:2}
+.mb-cta-sub{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--cdark);margin-bottom:36px;position:relative;z-index:2}
+.mb-cta-btn{display:inline-flex;align-items:center;gap:14px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:var(--red);color:var(--clight);border:none;padding:18px 36px;cursor:pointer;transition:background .25s;position:relative;z-index:2;text-decoration:none}
+.mb-cta-btn:hover{background:var(--redm)}
+.mb-cta-btn svg{width:18px;height:18px;flex-shrink:0}
+.mb-cta-note{font-size:11px;color:var(--stone);margin-top:16px;letter-spacing:.05em;position:relative;z-index:2}
+
+/* ─── CONCEPTUAL ─── */
+.concept-box{background:var(--black);border:.5px solid var(--gmid);padding:64px 48px;text-align:center;position:relative;overflow:hidden;margin-bottom:40px}
+.concept-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 50% 50%,rgba(122,28,28,.13) 0%,transparent 65%);pointer-events:none}
+.cb-brand{font-family:'Barlow Condensed',sans-serif;font-size:110px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--white);line-height:1;position:relative;z-index:2}
+.cb-divider{width:48px;height:1px;background:var(--redm);margin:20px auto;position:relative;z-index:2}
+.cb-tagline-main{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;font-style:italic;color:var(--clight);position:relative;z-index:2;line-height:1.2;margin-bottom:8px}
+.cb-tagline-note{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--redm);position:relative;z-index:2}
+
+/* Concepto elementos: Luz + Food proteína */
+.concepto-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--gmid);margin-bottom:40px}
+.concepto-card{background:var(--near);padding:36px 28px}
+.concepto-num{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--redm);margin-bottom:8px}
+.concepto-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--white);text-transform:uppercase;letter-spacing:.03em;line-height:1;margin-bottom:12px}
+.concepto-body{font-size:13px;color:var(--wgray);line-height:1.7}
+.concepto-body em{color:var(--cdark);font-style:normal;font-weight:400}
+.concepto-body ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.concepto-body ul li{padding-left:16px;position:relative;font-size:12px;color:var(--wgray)}
+.concepto-body ul li::before{content:'—';position:absolute;left:0;color:var(--redm);font-size:10px;top:4px;line-height:1}
+
+.buyer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gmid);margin-bottom:40px}
+.buyer-card{background:var(--near);padding:28px 20px;text-align:center}
+.buyer-icon{font-size:28px;margin-bottom:12px;display:block}
+.buyer-name{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--clight);margin-bottom:8px}
+.buyer-desc{font-size:12px;color:var(--stone);line-height:1.55}
+
+.voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.voice-card{padding:28px;border:.5px solid var(--gmid)}
+.voice-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
+.vy{color:var(--earthl)}
+.vn{color:var(--stone)}
+.voice-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.voice-list li{font-size:13px;line-height:1.5;padding-left:20px;position:relative;font-weight:300}
+.vc-yes .voice-list li{color:var(--cream)}
+.vc-yes .voice-list li::before{content:'✓';position:absolute;left:0;top:1px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--earthl)}
+.vc-no .voice-list li{color:var(--stone);text-decoration:line-through}
+.vc-no .voice-list li::before{content:'✕';position:absolute;left:0;top:1px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--gmid)}
+
+/* ─── FOOTER ─── */
+footer{max-width:1280px;margin:0 auto;padding:36px 64px;display:flex;justify-content:space-between;align-items:center;border-top:.5px solid var(--gmid)}
+.f-brand{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;letter-spacing:.15em;color:var(--gmid);text-transform:uppercase}
+.f-info{font-size:11px;color:var(--stone);text-align:right;line-height:1.7}
+
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{border-top:.5px solid var(--gmid)}
+  .hero-title{font-size:72px}
+  .sec{padding:48px 24px}
+  .niche-grid,.ref-grid,.paleta-grid,.concepto-grid,.buyer-grid,.voice-grid{grid-template-columns:1fr}
+  .buyer-grid{grid-template-columns:1fr 1fr}
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  footer{flex-direction:column;gap:16px;text-align:center}
+  .f-info{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">NURA</span>
+  <div class="nav-links">
+    <a href="#nicho">Nicho</a>
+    <a href="#referencias">Referencias</a>
+    <a href="#paletas">Paletas</a>
+    <a href="#moodboard">Moodboard</a>
+    <a href="#concepto">Concepto</a>
+  </div>
+  <span class="nav-badge">Etapa 01 — Research</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Investigación & Dirección Creativa</div>
+    <div class="hero-title">NURA</div>
+    <div class="hero-sub">Tu cuerpo lo sabe. NURA también.</div>
+    <a href="#moodboard" class="hero-cta">Ver moodboard en Figma →</a>
+  </div>
+  <div class="hero-right">
+    <div class="niche-pill">★ Posicionamiento de nicho</div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--stone);margin-bottom:20px">NURA: proteína funcional gourmet lista para consumir</div>
+    <div class="hero-niche-list">
+      <div class="niche-item">
+        <span class="niche-num">01</span>
+        <div class="niche-text"><strong>Proteína funcional premium</strong>Hamburguesas, chicharrones y snacks altos en proteína con identidad de marca deseable. La proteína es consecuencia del buen comer, no del sacrificio.</div>
+      </div>
+      <div class="niche-item">
+        <span class="niche-num">02</span>
+        <div class="niche-text"><strong>Snacks &amp; postres keto con estética editorial</strong>El consumidor keto urbano ya no quiere verse como enfermo: quiere verse sofisticado. Packaging oscuro que genera deseo.</div>
+      </div>
+      <div class="niche-item">
+        <span class="niche-num">03</span>
+        <div class="niche-text"><strong>Ready-to-cook de alto valor percibido</strong>Para personas ocupadas que no negocian calidad. Listo, real, nutritivo. Sin complicaciones ni estética de suplemento.</div>
+      </div>
+      <div class="niche-item">
+        <span class="niche-num">04</span>
+        <div class="niche-text"><strong>Espacio premium libre en Lima / LATAM</strong>El Cedro demostró que la sofisticación local es posible. NURA ocupa el espacio de alimentación funcional con identidad propia.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEC 01: NICHO -->
+<section class="sec" id="nicho">
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <div>
+      <div class="sec-eyebrow">Definición de nicho</div>
+      <div class="sec-title">Panorama específico para NURA</div>
+      <div class="sec-intro">NURA no compite con Quest ni con barras de proteína. Compite con marcas de comida real donde el placer y la nutrición coexisten — y donde ninguna marca local tiene identidad visual fuerte todavía.</div>
+    </div>
+  </div>
+  <div class="niche-grid">
+    <div class="niche-card">
+      <span class="nc-emoji">⚡</span>
+      <div class="nc-label">Nicho primario</div>
+      <div class="nc-name">Proteína funcional lista</div>
+      <div class="nc-desc">Hamburguesas y proteína animal empacada con identidad visual poderosa. El cliente de 25–45 años, activo y ocupado, que compra el estilo de vida y la practicidad — no solo el macronutriente. La comida es el producto; la proteína es el beneficio.</div>
+      <div class="nc-brands">
+        <span class="nc-tag">Nush Healthy Spreads (UK)</span>
+        <span class="nc-tag">Vivir Powe Snacks (Lima)</span>
+        <span class="nc-tag">ButcherBox (USA)</span>
+      </div>
+    </div>
+    <div class="niche-card">
+      <span class="nc-emoji">🥑</span>
+      <div class="nc-label">Nicho secundario</div>
+      <div class="nc-name">Snack keto gourmet</div>
+      <div class="nc-desc">Snacks y postres keto presentados como objetos de deseo, no como productos médicos. La estética editorial reemplaza la imagen de farmacia. Packaging oscuro y tipografía limpia que comunica placer inteligente — no restricción.</div>
+      <div class="nc-brands">
+        <span class="nc-tag">Hu Kitchen (USA)</span>
+        <span class="nc-tag">Kiss My Keto</span>
+        <span class="nc-tag">The Kettle &amp; Fire</span>
+      </div>
+    </div>
+    <div class="niche-card">
+      <span class="nc-emoji">🌎</span>
+      <div class="nc-label">Contexto LATAM / Lima</div>
+      <div class="nc-name">Oportunidad local abierta</div>
+      <div class="nc-desc">El Cedro (Lima) demostró que una marca de alimentos peruana puede hacer un rebrand internacionalmente sofisticado con raíces culturales auténticas. En el espacio de proteína funcional premium en Lima, el territorio visual está libre. NURA llega primero.</div>
+      <div class="nc-brands">
+        <span class="nc-tag">El Cedro (Lima)</span>
+        <span class="nc-tag">Vivir Powe (Lima)</span>
+        <span class="nc-tag">Mercado 28</span>
+      </div>
+    </div>
+  </div>
+  <div class="niche-verdict">
+    <div class="verdict-icon">→</div>
+    <div class="verdict-text">
+      <strong>Conclusión de nicho:</strong> NURA se posiciona en la intersección entre <strong>proteína funcional real</strong> y <strong>lifestyle premium moderno</strong>. Sus referentes visuales son marcas de comida funcional con packaging editorial oscuro — no gym brands, no suplementos. La pregunta que debe responder cada pieza visual de NURA es: <em>"¿Esto genera deseo en alguien que cuida su cuerpo pero también disfruta comer?"</em>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 02: REFERENCIAS -->
+<section class="sec" id="referencias">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <div>
+      <div class="sec-eyebrow">Benchmarking de marca</div>
+      <div class="sec-title">Referencias del Nicho Funcional Gourmet</div>
+      <div class="sec-intro">Marcas que habitan el espacio donde NURA quiere estar: comida real + proteína + identidad visual poderosa + packaging que genera deseo sin hablar de gym.</div>
+    </div>
+  </div>
+  <div class="ref-grid">
+
+    <div class="ref-card">
+      <div style="display:flex;height:6px;margin:-32px -28px 24px;overflow:hidden"><div style="flex:1;background:#C4A060"></div><div style="flex:1;background:#8B3A2A"></div><div style="flex:1;background:#4A5C3A"></div><div style="flex:1;background:#F2EDE4"></div></div>
+      <div class="ref-header">
+        <div class="ref-initial" style="color:#C4A882">EC</div>
+        <div class="ref-country">Lima, Perú<br>Rebrand 2023–2024</div>
+      </div>
+      <div class="ref-name">El Cedro</div>
+      <div class="ref-cat">Pan árabe · Snacks · Cafetería — Rebrand local de referencia directa</div>
+      <div class="ref-insight">El caso de rebrand peruano más relevante para NURA. Adoptó arquitectura libanesa como inspiración visual: líneas geométricas, calidez mediterránea, modernidad con raíces culturales. Su nueva identidad demuestra que una marca de alimentos peruana puede tener sofisticación internacional sin perder autenticidad local. Nació siendo pan árabe de barrio y se convirtió en marca de estilo de vida.</div>
+      <div class="ref-tags">
+        <span class="rtag rtag-c">LATAM premium</span>
+        <span class="rtag rtag-g">Rebrand exitoso</span>
+        <span class="rtag rtag-r">Identidad cultural</span>
+      </div>
+      <div class="ref-apply"><strong style="font-style:normal;font-weight:500;color:var(--clight)">Para NURA:</strong> Si El Cedro lo logró con pan árabe, NURA puede hacerlo con proteína funcional. El modelo de rebrand culturalmente anclado pero internacionalmente aspiracional — ejecutado desde Lima, con orgullo local.</div>
+      <a href="https://www.elcedro.pe" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);border:.5px solid var(--gmid);padding:7px 14px;margin-top:16px;transition:color .2s,border-color .2s">Ver sitio web →</a>
+    </div>
+
+    <div class="ref-card">
+      <div style="display:flex;height:6px;margin:-32px -28px 24px;overflow:hidden"><div style="flex:1;background:#F5C800"></div><div style="flex:1;background:#1A1A1A"></div><div style="flex:1;background:#E8530A"></div><div style="flex:1;background:#F8F8F8"></div></div>
+      <div class="ref-header">
+        <div class="ref-initial" style="color:#C8E830">VP</div>
+        <div class="ref-country">Lima, Perú<br>Competencia directa</div>
+      </div>
+      <div class="ref-name">Vivir Powe Snacks</div>
+      <div class="ref-cat">Snacks funcionales / proteicos — Marca local activa en redes</div>
+      <div class="ref-insight">Referencia de competencia directa en el mercado limeño. Snacks altos en proteína dirigidos a un público joven y activo. Su identidad visual es más joven y colorida — todavía no ocupa el espacio premium-oscuro-editorial que NURA puede tomar. Tiene tracción de mercado pero le falta la sofisticación y el deseo visual que NURA debe generar.</div>
+      <div class="ref-tags">
+        <span class="rtag rtag-r">Competencia directa</span>
+        <span class="rtag rtag-c">Snack proteico</span>
+        <span class="rtag rtag-s">Mercado Lima</span>
+      </div>
+      <div class="ref-apply"><strong style="font-style:normal;font-weight:500;color:var(--clight)">Para NURA:</strong> Vivir Powe valida que el mercado limeño ya compra snack proteico. NURA debe diferenciarse por arriba: más sofisticación, más deseo visual, packaging que compita internacionalmente.</div>
+      <a href="https://www.instagram.com/vivirpowe" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);border:.5px solid var(--gmid);padding:7px 14px;margin-top:16px;transition:color .2s,border-color .2s">Ver en Instagram →</a>
+    </div>
+
+    <div class="ref-card">
+      <div style="display:flex;height:6px;margin:-32px -28px 24px;overflow:hidden"><div style="flex:1;background:#1C1C1C"></div><div style="flex:1;background:#E8DDD0"></div><div style="flex:1;background:#8C6E3A"></div><div style="flex:1;background:#C8B89A"></div></div>
+      <div class="ref-header">
+        <div class="ref-initial" style="color:#DDD0BC">NH</div>
+        <div class="ref-country">Reino Unido<br>Referencia editorial</div>
+      </div>
+      <div class="ref-name">Nush Healthy Spreads</div>
+      <div class="ref-cat">Spreads altos en proteína · Packaging editorial oscuro · Éxito en UK</div>
+      <div class="ref-insight">La referencia más directa para el tono visual que NURA debe lograr. Spreads de almendra y yogurt altos en proteína, presentados con packaging oscuro, tipografía bold condensada y fotografía editorial. Sin mencionar gym, sin colores saturados de "salud". El producto parece de deli gourmet, no de tienda naturista. Su comunidad es exactamente el buyer de NURA: mujeres y hombres 25–40, urbanos, que cuidan lo que comen pero también lo disfrutan.</div>
+      <div class="ref-tags">
+        <span class="rtag rtag-r">Dark editorial</span>
+        <span class="rtag rtag-c">Proteína funcional</span>
+        <span class="rtag rtag-g">Buyer exacto</span>
+      </div>
+      <div class="ref-apply"><strong style="font-style:normal;font-weight:500;color:var(--clight)">Para NURA:</strong> La plantilla visual más cercana. Packaging oscuro + tipografía fuerte + fotografía de producto que apetece. Sin claims de gym. El producto se ve premium porque se ve delicioso primero.</div>
+      <a href="https://www.nushfoods.co.uk" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);border:.5px solid var(--gmid);padding:7px 14px;margin-top:16px;transition:color .2s,border-color .2s">Ver sitio web →</a>
+    </div>
+
+    <div class="ref-card">
+      <div style="display:flex;height:6px;margin:-32px -28px 24px;overflow:hidden"><div style="flex:1;background:#EDE8DE"></div><div style="flex:1;background:#1A1814"></div><div style="flex:1;background:#C4AA80"></div><div style="flex:1;background:#A08850"></div></div>
+      <div class="ref-header">
+        <div class="ref-initial" style="color:#DDD0BC">HU</div>
+        <div class="ref-country">Nueva York, EE.UU.<br>$500M valuation</div>
+      </div>
+      <div class="ref-name">Hu Kitchen</div>
+      <div class="ref-cat">Snacks funcionales sin junk · Packaging minimalista de joyería</div>
+      <div class="ref-insight">Redefinió el snack saludable con estética de joyería minimalista. Packaging beige-crema con tipografía limpia, sin colores saturados, sin imágenes de gimnasio. Su claim es directo: "Get back to human." El consumidor lo compra porque se siente inteligente y con estilo al mismo tiempo. Prueba de que el snack funcional puede generar el mismo deseo que una marca de moda.</div>
+      <div class="ref-tags">
+        <span class="rtag rtag-c">Clean label</span>
+        <span class="rtag rtag-g">Snack premium</span>
+        <span class="rtag rtag-r">Placer inteligente</span>
+      </div>
+      <div class="ref-apply"><strong style="font-style:normal;font-weight:500;color:var(--clight)">Para NURA en línea keto/snacks:</strong> La referencia de cómo hacer que el producto funcional sea deseable visualmente, no medicinal. El packaging debe hacer que el consumidor quiera mostrarlo, no esconderlo.</div>
+      <a href="https://www.hukitchen.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);border:.5px solid var(--gmid);padding:7px 14px;margin-top:16px;transition:color .2s,border-color .2s">Ver sitio web →</a>
+    </div>
+
+    <div class="ref-card">
+      <div style="display:flex;height:6px;margin:-32px -28px 24px;overflow:hidden"><div style="flex:1;background:#CC2200"></div><div style="flex:1;background:#0A0A0A"></div><div style="flex:1;background:#8A1500"></div><div style="flex:1;background:#FAFAFA"></div></div>
+      <div class="ref-header">
+        <div class="ref-initial" style="color:#E24B4A">IM</div>
+        <div class="ref-country">Global<br>Rebrand 2024</div>
+      </div>
+      <div class="ref-name">Impossible Foods</div>
+      <div class="ref-cat">Proteína alternativa · Pivote estético dramático 2024</div>
+      <div class="ref-insight">En 2024 abandonaron el verde "sostenible" y adoptaron rojo dramático sobre negro. El CEO declaró explícitamente: "Queremos parecer carne, no ensalada." El rebrand fue hacia el placer y la apetitosidad, no hacia la virtud ambiental. El resultado: el packaging parece de food gourmet, el consumidor lo percibe deseable. Lección directa sobre el poder del color oscuro en proteína.</div>
+      <div class="ref-tags">
+        <span class="rtag rtag-r">Pivot hacia placer</span>
+        <span class="rtag rtag-c">Dark packaging</span>
+        <span class="rtag rtag-g">Bold move</span>
+      </div>
+      <div class="ref-apply"><strong style="font-style:normal;font-weight:500;color:var(--clight)">Para NURA:</strong> Validación de que rojo + negro es el lenguaje del "proteína premium" en 2024–2026. No es tendencia pasajera — es el idioma del deseo en comida funcional de alto valor.</div>
+      <a href="https://www.impossiblefoods.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);border:.5px solid var(--gmid);padding:7px 14px;margin-top:16px;transition:color .2s,border-color .2s">Ver sitio web →</a>
+    </div>
+
+    <div class="ref-card">
+      <div style="display:flex;height:6px;margin:-32px -28px 24px;overflow:hidden"><div style="flex:1;background:#101010"></div><div style="flex:1;background:#FFFFFF"></div><div style="flex:1;background:#F5C400"></div><div style="flex:1;background:#4A4A4A"></div></div>
+      <div class="ref-header">
+        <div class="ref-initial" style="color:#9FE1CB">BB</div>
+        <div class="ref-country">USA · Global<br>Referencia lifestyle</div>
+      </div>
+      <div class="ref-name">Bulletproof</div>
+      <div class="ref-cat">Café funcional · Colágeno · Proteína · Lifestyle keto</div>
+      <div class="ref-insight">Construyó una marca de lifestyle alrededor del rendimiento cognitivo y físico sin jamás parecer un suplemento de gym. Packaging negro con tipografía limpia y fotografía de producto minimalista. La marca vende "alto rendimiento" a personas ejecutivas, no atletas. El buyer es exactamente el de NURA: ocupado, exigente, dispuesto a pagar más si el producto se ve premium.</div>
+      <div class="ref-tags">
+        <span class="rtag rtag-r">Lifestyle funcional</span>
+        <span class="rtag rtag-s">Sin estética gym</span>
+        <span class="rtag rtag-c">Buyer ejecutivo</span>
+      </div>
+      <div class="ref-apply"><strong style="font-style:normal;font-weight:500;color:var(--clight)">Para NURA:</strong> El tono de comunicación: "esto hace que rindas mejor, te veas mejor, te sientas mejor" — sin mencionar proteínas como si fueran medicina. La proteína como resultado natural de comer bien.</div>
+      <a href="https://www.bulletproof.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);border:.5px solid var(--gmid);padding:7px 14px;margin-top:16px;transition:color .2s,border-color .2s">Ver sitio web →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEC 03: PALETAS CROMÁTICAS -->
+<section class="sec" id="paletas">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <div>
+      <div class="sec-eyebrow">Exploración cromática</div>
+      <div class="sec-title">Tres Paletas para NURA</div>
+      <div class="sec-intro">Tres direcciones cromáticas analizadas desde el brief. Cada una representa una estrategia visual distinta y es candidata para convertirse en la paleta principal de NURA.</div>
+    </div>
+  </div>
+  <div class="paleta-grid">
+
+    <!-- PALETA A: La del brief original - Negro/Cream/Rojo/Dorado -->
+    <div class="paleta-card">
+      <div class="paleta-swatches">
+        <div class="swatch-wide swatch" style="background:#2C2C2C"></div>
+        <div class="swatch" style="background:#EEEBE4"></div>
+        <div class="swatch" style="background:#EEEBE4"></div>
+        <div class="swatch" style="background:#7A1C1C"></div>
+        <div class="swatch" style="background:#B8953A"></div>
+      </div>
+      <div class="paleta-info">
+        <div class="paleta-name">A — Dark Gourmet</div>
+        <div class="paleta-desc">Negro grafito profundo + crema cálida + rojo oscuro + dorado. El lenguaje del "proteína premium" en 2024–2026. Ningún competidor local ocupa este espacio. Alta diferenciación. Viral por contraste en redes.</div>
+        <div class="paleta-hexes">
+          <span class="hex-chip">#2C2C2C</span>
+          <span class="hex-chip">#EEEBE4</span>
+          <span class="hex-chip">#7A1C1C</span>
+          <span class="hex-chip">#B8953A</span>
+        </div>
+        <span class="paleta-badge pb-par">◐ Posible paleta principal</span>
+      </div>
+    </div>
+
+    <!-- PALETA B: Negro/Cream/Verde oscuro/Lima - alternativa -->
+    <div class="paleta-card">
+      <div class="paleta-swatches">
+        <div class="swatch-wide swatch" style="background:#2C2C2C"></div>
+        <div class="swatch" style="background:#EEEBE4"></div>
+        <div class="swatch" style="background:#EEEBE4"></div>
+        <div class="swatch" style="background:#0D3321"></div>
+        <div class="swatch" style="background:#C8E830"></div>
+      </div>
+      <div class="paleta-info">
+        <div class="paleta-name">B — Funcional Vivo</div>
+        <div class="paleta-desc">Negro + crema + verde oscuro + lima eléctrico. Energía funcional sin caer en clichés naturistas. El lima es el acento de vitalidad — tensión entre lo oscuro y lo vivo. Más agresivo, más joven. Línea keto activa.</div>
+        <div class="paleta-hexes">
+          <span class="hex-chip">#2C2C2C</span>
+          <span class="hex-chip">#EEEBE4</span>
+          <span class="hex-chip">#0D3321</span>
+          <span class="hex-chip">#C8E830</span>
+        </div>
+        <span class="paleta-badge pb-par">◐ Posible paleta principal</span>
+      </div>
+    </div>
+
+    <!-- PALETA C: Negro/Cream/Rojo/Marrón tierra - descartada -->
+    <div class="paleta-card">
+      <div class="paleta-swatches">
+        <div class="swatch-wide swatch" style="background:#2C2C2C"></div>
+        <div class="swatch" style="background:#EEEBE4"></div>
+        <div class="swatch" style="background:#EEEBE4"></div>
+        <div class="swatch" style="background:#7A1C1C"></div>
+        <div class="swatch" style="background:#5E4832"></div>
+      </div>
+      <div class="paleta-info">
+        <div class="paleta-name">C — Earth Oscuro</div>
+        <div class="paleta-desc">Negro + crema + rojo oscuro + marrón tierra. Más orgánico y cálido. Evoca materiales artesanales: cuero, madera, tierra. Mayor riesgo de percibirse artesanal que moderno — requiere ejecución tipográfica muy fuerte para sostener la sofisticación.</div>
+        <div class="paleta-hexes">
+          <span class="hex-chip">#2C2C2C</span>
+          <span class="hex-chip">#EEEBE4</span>
+          <span class="hex-chip">#7A1C1C</span>
+          <span class="hex-chip">#5E4832</span>
+        </div>
+        <span class="paleta-badge pb-par">◐ Posible paleta principal</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEC 04: MOODBOARD CTA -->
+<section class="sec" id="moodboard">
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <div>
+      <div class="sec-eyebrow">Referencias visuales</div>
+      <div class="sec-title">Moodboard NURA en Figma</div>
+      <div class="sec-intro">El moodboard completo de referencias visuales — packaging, tipografía, fotografía de producto, competencia y ambiente — está organizado y accesible en Figma para revisión y colaboración.</div>
+    </div>
+  </div>
+
+  <div class="mb-cta-block">
+    <div class="mb-cta-eyebrow">★ Moodboard interactivo</div>
+    <div class="mb-cta-title">Ver referencias visuales completas</div>
+    <div class="mb-cta-sub">Packaging · Tipografía · Fotografía · Paleta · Competencia · Ambiente</div>
+    <a href="#" class="mb-cta-btn" onclick="return false;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Abrir moodboard en Figma
+    </a>
+    <div class="mb-cta-note">El link de Figma se activa una vez entregado el archivo al cliente · Solo lectura</div>
+  </div>
+
+</section>
+
+<!-- SEC 05: CONCEPTO -->
+<section class="sec" id="concepto">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <div>
+      <div class="sec-eyebrow">Brand concept</div>
+      <div class="sec-title">Propuesta Conceptual de Identidad</div>
+      <div class="sec-intro">El núcleo conceptual desde el que se construirá todo: logotipo, packaging, comunicación y extensiones futuras. Anclado en el buyer real y en lo que NURA significa para su vida.</div>
+    </div>
+  </div>
+
+  <!-- Logline -->
+  <div class="concept-box">
+    <div class="cb-brand">NURA</div>
+    <div class="cb-divider"></div>
+    <div class="cb-tagline-main">Tu cuerpo lo sabe. NURA también.</div>
+    <div class="cb-tagline-note">★ Logline oficial</div>
+  </div>
+
+  <!-- Elementos del concepto: Luz + Food + Proteína -->
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:16px">Triángulo conceptual</div>
+  <div class="concepto-grid" style="margin-bottom:40px">
+    <div class="concepto-card">
+      <div class="concepto-num">Elemento 01</div>
+      <div class="concepto-title">Luz</div>
+      <div class="concepto-body">
+        NURA como nombre evoca luz — luminosidad, claridad, energía que emerge. En árabe <em>Nūr</em> significa literalmente luz. El concepto visual parte de contraste extremo: fondo oscuro del que emerge el producto iluminado, como si la proteína real fuera la fuente de energía.
+        <ul>
+          <li>Fotografía con luz lateral dramática sobre fondos oscuros</li>
+          <li>El producto siempre es el punto de luz de la composición</li>
+          <li>Contraste como herramienta de deseo visual</li>
+          <li>Energía que se percibe visualmente, no se declara con palabras</li>
+        </ul>
+      </div>
+    </div>
+    <div class="concepto-card">
+      <div class="concepto-num">Elemento 02</div>
+      <div class="concepto-title">Food Proteína</div>
+      <div class="concepto-body">
+        La proteína de NURA no se explica — se muestra como comida que apetece. El copywriting nunca menciona gramos ni porcentajes en la comunicación principal. La fotografía de producto habla por sí sola: <em>esto se ve bien, esto se ve delicioso, esto quiero comerlo.</em>
+        <ul>
+          <li>La proteína es el resultado natural de comer NURA</li>
+          <li>Textura, vapor, color — la apetitosidad es el mensaje principal</li>
+          <li>Los claims nutricionales existen pero no son el héroe</li>
+          <li>Comida real primero. Función después.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buyer personas específicos -->
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:16px">Buyer personas — quién es NURA</div>
+  <div class="buyer-grid">
+    <div class="buyer-card">
+      <span class="buyer-icon">👩‍💼</span>
+      <div class="buyer-name">La ejecutiva activa</div>
+      <div class="buyer-desc">25–38 años, Lima. Entrena 3–4 veces a la semana. Poco tiempo para cocinar. Busca comida real que no la haga sentir culpable. Compra por Instagram. Valora que el packaging se vea bien en sus stories.</div>
+    </div>
+    <div class="buyer-card">
+      <span class="buyer-icon">🧑‍💻</span>
+      <div class="buyer-name">El profesional keto</div>
+      <div class="buyer-desc">28–42 años, urbano. Lleva 6+ meses en keto o low carb. Cansado de productos que se ven médicos. Quiere snacks que pueda sacar en una reunión sin vergüenza. Dispuesto a pagar premium por calidad real.</div>
+    </div>
+    <div class="buyer-card">
+      <span class="buyer-icon">🏃‍♀️</span>
+      <div class="buyer-name">La atleta recreational</div>
+      <div class="buyer-desc">22–35 años. Corre, hace pilates o crossfit. No es atleta de élite pero cuida su alimentación con seriedad. Quiere proteína sin la estética masculinizada de los suplementos. NURA le habla directo.</div>
+    </div>
+    <div class="buyer-card">
+      <span class="buyer-icon">👨‍🍳</span>
+      <div class="buyer-name">El foodie consciente</div>
+      <div class="buyer-desc">30–45 años. Disfruta comer bien y también cuida su composición corporal. No separa placer de nutrición. Para él, la hamburguesa de NURA no es "trampa" — es la opción inteligente que se ve y sabe premium.</div>
+    </div>
+  </div>
+
+  <!-- La marca representa -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gmid);margin-bottom:40px">
+    <div style="background:var(--near);padding:28px 20px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--redm);margin-bottom:8px">Fuerza</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Proteína real, energía real</div>
+      <div style="font-size:12px;color:var(--stone);line-height:1.6">NURA alimenta el rendimiento del día — en el trabajo, en el gym, en la vida. No promesas imposibles. Solo comida que funciona.</div>
+    </div>
+    <div style="background:var(--near);padding:28px 20px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--redm);margin-bottom:8px">Placer</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Comer bien se disfruta</div>
+      <div style="font-size:12px;color:var(--stone);line-height:1.6">La nutrición no tiene que ser sacrificio. El placer es parte del bienestar. Comer NURA se siente bien — antes, durante y después.</div>
+    </div>
+    <div style="background:var(--near);padding:28px 20px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--redm);margin-bottom:8px">Control</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Tu cuerpo, tus decisiones</div>
+      <div style="font-size:12px;color:var(--stone);line-height:1.6">NURA es para personas que saben lo que quieren: calidad real, sin complicaciones, lista para su ritmo de vida.</div>
+    </div>
+  </div>
+
+  <!-- Voz de marca -->
+  <div class="voice-grid">
+    <div class="voice-card vc-yes">
+      <div class="voice-title vy">NURA habla así</div>
+      <ul class="voice-list">
+        <li>Directo y sin adornos: "150g de proteína real."</li>
+        <li>Confiado sin arrogancia: "Lo que tu cuerpo necesita."</li>
+        <li>Sensorial: describe sabor, textura, experiencia.</li>
+        <li>Aspiracional pero real: premium del día a día.</li>
+        <li>Poético y breve: "Tu cuerpo lo sabe. NURA también."</li>
+        <li>Habla a personas reales, no a atletas de élite.</li>
+      </ul>
+    </div>
+    <div class="voice-card vc-no">
+      <div class="voice-title vn">NURA nunca habla así</div>
+      <ul class="voice-list">
+        <li>Jerga de gym: "BRO GAINS MÁXIMOS."</li>
+        <li>Lenguaje médico: "Optimice su síntesis proteica."</li>
+        <li>Promesas imposibles: "Pierde 10kg en 30 días."</li>
+        <li>Naturista cliché: "La madre tierra nutriéndote."</li>
+        <li>Falsa urgencia: "¡Oferta limitada! ¡Actúa ya!"</li>
+        <li>Condescendiente: "¡Súper rico y saludable!"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-brand">NURA</div>
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)">—</div>
+  <div class="f-info">Research & Dirección Creativa — Etapa 01<br>
+  <span style="color:var(--gmid)">Para aprobar esta dirección y avanzar a Etapa 02: Desarrollo de Logo</span></div>
+</footer>
+
+</body>
+</html>
